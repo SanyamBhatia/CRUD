@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles.css">
+  <title>CRUD App</title>
+</head>
+<body>
+  <h1>Item List</h1>
+  <a href="/items/new">Add New Item</a>
+  <ul>
+    <% items.forEach(item => { %>
+      <li>
+        <div>
+          <strong><%= item.name %></strong>: <%= item.description %>
+        </div>
+        <div>
+          <a href="/items/<%= item._id %>/edit">Edit</a>
+          <form action="/items/<%= item._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </div>
+      </li>
+    <% }); %>
+  </ul>
+  <footer>
+    &copy; 2024 CRUD App
+  </footer>
+</body>
+</html>
